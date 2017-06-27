@@ -1,7 +1,7 @@
 FROM showpass/python-django
 
 # CircleCI
-RUN apk --no-cache add git tar gzip openssl
+RUN apk --no-cache add git tar gzip openssl openssh-client
 
 # Node
 RUN apk add nodejs
