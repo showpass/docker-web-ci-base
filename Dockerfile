@@ -1,10 +1,8 @@
 FROM showpass/python-django
 
+RUN apk update
 # CircleCI
-RUN apk --no-cache add git tar gzip openssl openssh-client
-
-# Node
-RUN apk add nodejs
+RUN apk --no-cache add git tar gzip openssl openssh-client nodejs
 
 # NPM dependencies
 RUN npm install -g gulp \
@@ -12,7 +10,7 @@ RUN npm install -g gulp \
 
 # PhantomJS
 # https://github.com/Overbryd/docker-phantomjs-alpine/releases/tag/2.11
-RUN apk update && apk add --no-cache fontconfig && \
+RUN apk add --no-cache fontconfig && \
     mkdir -p /usr/share && \
     cd /usr/share \
     && curl -L https://github.com/Overbryd/docker-phantomjs-alpine/releases/download/2.11/phantomjs-alpine-x86_64.tar.bz2 | tar xj \
